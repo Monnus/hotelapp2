@@ -1,13 +1,15 @@
-import React from "react";
-
+import React from "react"; 
+import { id_image } from "components/landingPageComponents/middle";
 import { List, Row, Column, Text, Input, Img } from "components";
+import { caputureReviewDetail } from "pages/Review";
 
 const BookingspagePage = () => {
+  console.log("id_image",id_image,caputureReviewDetail)
   return (
     <>
       <List
         className="bg-bluegray_100 font-inter gap-[0] min-h-[auto] mx-[auto] lg:py-[22px] xl:py-[25px] py-[29px] 3xl:py-[34px] w-[100%]"
-        orientation="vertical"
+        orientation="vertical" 
       >
         <Row className="bg-white_A700 items-center lg:my-[19px] xl:my-[21px] my-[24.5px] 2xl:my-[24px] 3xl:my-[29px] lg:p-[15px] xl:p-[17px] p-[20px] 3xl:p-[24px] w-[100%]">
           <Column className="lg:ml-[14px] xl:ml-[16px] ml-[18px] 3xl:ml-[21px] lg:pr-[396px] xl:pr-[453px] pr-[510px] 3xl:pr-[612px] w-[69%]">

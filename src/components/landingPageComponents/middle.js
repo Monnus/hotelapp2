@@ -8,23 +8,55 @@ import Grid from '@mui/material/Grid';
 import { Box } from '@mui/system'
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
+import { parse } from 'postcss';
+import { hotalData } from 'hotalData';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-export default function Middle({hotRoomsObj, getId}) {
-const [id,setId]=useState("")
-useEffect(()=>{
-  getId(id);
-},[id])
+export default function Middle({hotRoomsObj}) {
+const theme=createTheme({
+  palette:{
+  bookingscolor:{
+      main:"orange"
+    }
+  }
+})
+const {bestRoom:bestRooms}=hotalData;
+console.log("best rooms",bestRooms);
+
   // console.log(hotRoomsObj);
 const navigate=useNavigate();
+function handleBookingsId(id){
+ id_image=id;
+ navigate("/Bookings")
+}
+  const bestSelling=bestRooms.map(data=>{
+    return(
+      <>
+      <Card sx={{ maxWidth: 345 }} key={data.id} style={{margin:"10px",padding:"auto",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={data.picture}
+        alt=""
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {data.title}
+        </Typography>
+     
+      </CardContent>
+      <CardActions>
+       <ThemeProvider theme={theme}>
+        <Button color="bookingscolor" variant="contained" 
+        style={{fontWeight:"600"}} size="small" onClick={()=>handleBookingsId(data.id)}>Review</Button>
+       </ThemeProvider>
 
-  function handlesreviewclick(e){
-    console.log(e.target.parentElement.parentElement.id);
-    const id= e.target.parentElement.parentElement.id;
-setId((prev)=>id);
-navigate("/Review");
-  }
-
+      </CardActions>
+    </Card>
+      </>
+    )
+  })
 
 
   return (
@@ -86,36 +118,10 @@ navigate("/Review");
 <Container maxWidth="lg" sx={{margin:"0 200px 0 0"}}>
   <h3  style={{margin:"0 0 20px 50%",textAlign:"center",color:"white",width:"200px",height:"60px",background:"#048BCC",lineHeight:"60px"}}>Best selling rooms</h3>
 <Box  sx={{background:"#5DBBFF",display:"flex",justifyContent:"space-around",height:"auto", flexWrap:"wrap"}}>
-{hotRoomsObj.map((obj)=>{
-  return( 
-  <>
-    <Card sx={{ maxWidth: 445,maxHeight:325,"&:hover":{opacity:0.9},}} key={`${obj.roomID}` }  id={obj.roomID}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="200"
-          image={obj.hotRoomImg}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {obj.roomName}
-          </Typography>
-        
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button variant="contained" size="large" color="primary" className="ReviewBtn" onClick={handlesreviewclick}>
-          Review
-        </Button>
-      </CardActions>
-    </Card>
-  
-  </>
-  
-    )
-})}
 
+
+
+{bestSelling}
 
 
 </Box>
@@ -127,35 +133,6 @@ navigate("/Review");
 <h2 style={{margin:"0 0 20px 50%",textAlign:"center",color:"white",width:"200px",height:"60px",background:"#048BCC",lineHeight:"60px"}}>Rooms</h2>
 <Box sx={{maxHeight:"auto",width:"auto",boxShadow:" 0 0 10px #F5F5F5",display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
 
-{hotRoomsObj.map((obj)=>{
-  return( 
-  <>
-    <Card sx={{ maxWidth: 445,maxHeight:325,"&:hover":{opacity:0.9},}} key={obj.roomName}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="200"
-          image={obj.hotRoomImg}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {obj.roomName}
-          </Typography>
-        
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button variant="contained" size="large" color="primary">
-          Review
-        </Button>
-      </CardActions>
-    </Card>
-  
-  </>
-  
-    )
-})}
 
 </Box>
 </Container>
@@ -164,3 +141,4 @@ navigate("/Review");
   </main>
   )
 }
+export let id_image="";
