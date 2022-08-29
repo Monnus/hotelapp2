@@ -109,7 +109,7 @@ function handleBookingsId(id){
               Book Now
             </Button>
             <p style={{height:"80px",width:"120px",border:"1px  solid black",alignItems:"center",padding:"30px 10px " , margin:"0 70px 0 0"} }>
-            Total..
+            Total..{reviewPagehotalData.room_cost.room}
             </p>
           </Row>
         </Column>

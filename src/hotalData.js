@@ -10,6 +10,10 @@ export let hotalData={
         description:"on bedroom with a king sized bed 2 king sized arm chaires tables to host guest of 5 people the theme of the romm miky white with brown cotted curtuns,TV and wifi included",
         "booked":false,
         color:"orange",
+        room_cost:{
+            romm:5000
+        }
+        
     },
     {
         "id":"room2",
@@ -19,6 +23,9 @@ export let hotalData={
         description:`A two bedroom with TV and Wifi two restroom comes with a dinning room , person table and belcony `,
         "booked":false,
         color:"orange",
+        room_cost:{
+            room:4000,
+        }
     },
     {
         "id":"room3",
@@ -27,7 +34,10 @@ export let hotalData={
         "state":false,
         description:" first class laxuery comes with TV and wifi with 10 chair table with sun roof  in door jacuzzy",
         "booked":false,
-        color:"orange", 
+        color:"orange",
+        room_cost:{
+            room:10000
+        } 
     },
     {
         "id":"room4",
@@ -37,6 +47,9 @@ export let hotalData={
         description:"belcony door view indoor jacuzzy 10 chair table Tv and wifi included",
         "booked":false,
         color:"orange",
+        room_cost:{
+            room:15000
+        }
     },
     {
         "id":"room5",
@@ -46,6 +59,9 @@ export let hotalData={
         description:"2 bed room  TV and wifi belcony 1 restroom ",      
         "booked":false,
         color:"orange",
+        room_cost:{
+            room:3000
+        }
     }
 ]
 
