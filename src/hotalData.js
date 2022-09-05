@@ -11,7 +11,7 @@ export let hotalData={
         "booked":false,
         color:"orange",
         room_cost:{
-            romm:5000
+            room:5000
         }
         
     },

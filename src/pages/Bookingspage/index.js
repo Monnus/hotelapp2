@@ -16,16 +16,15 @@ const BookingspagePage = () => {
   const bookingsArr= new Set([]);
   let renderArr=[];
   // bookingsArr.clear()
-
-
+console.log(id_image,caputureReviewDetail);
   if(caputureReviewDetail.roomSelected){
-
-  hotalData.bestRoom.filter(data=>{
-    if(data.id_image===id_image){
-      bookingsArr.add({objID:nanoid(),id_image,...caputureReviewDetail,data}); 
-    }
-
+    hotalData.bestRoom.map(data=>{
+      if(data.id===id_image){
+        bookingsArr.add({objID:nanoid(),id_image,...caputureReviewDetail,data}); 
+      }
+return {}
     })
+
 
   }
 bookingsArr.forEach(value=>{
@@ -49,6 +48,8 @@ bookingsArr.forEach(value=>{
         flexDirection:"column",
         width: 700,
         marginRight:"100px",
+          justifyContent:"space-around",
+
 
         height: "100%",
         backgroundColor: 'lightgray ',
@@ -58,8 +59,19 @@ bookingsArr.forEach(value=>{
         },
       }}
     >
-<div>title</div>
-<div></div>
+<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px", borderRadius:"10px",background:"gray",alignContent:"center"}}><h2>@Hotal {dataArr.data.title}</h2></div>
+
+<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"gray"}}>Room cost {dataArr.data.room_cost.room}</div>
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"gray"}}>
+  Room type:<br></br>
+Room :X_</div>
+
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"70px",borderRadius:"10px",background:"gray"}}>
+stay:3days adults:2
+
+
+hospitalization:luxery: children:0
+</div>
         </Box>
 
           <Column className="items-center w-[29%]">
@@ -68,6 +80,7 @@ bookingsArr.forEach(value=>{
         width: 300,
         height: "100%",
         backgroundColor: 'lightgray ',
+        marginBottom:"5px",
         '&:hover': {
           backgroundColor: 'primary.main',
           opacity: [0.9, 0.8, 0.7],
@@ -75,7 +88,7 @@ bookingsArr.forEach(value=>{
       }}
     >
             <Img
-              src="images/img_previewimg.png"
+              src={dataArr.data.picture}
               className="lg:h-[181px] xl:h-[207px] h-[232px] 2xl:h-[233px] 3xl:h-[279px] w-[100%]"
               alt="previewImg"
             />
@@ -121,7 +134,7 @@ bookingsArr.forEach(value=>{
         className="bg-bluegray_100 font-inter gap-[0] min-h-[auto] mx-[auto] lg:py-[22px] xl:py-[25px] py-[29px] 3xl:py-[34px] w-[100%]"
         orientation="vertical" 
       >
-
+{renderJsx}
         <Row className="bg-white_A700 items-center lg:my-[19px] xl:my-[21px] my-[24.5px] 2xl:my-[24px] 3xl:my-[29px] lg:p-[15px] xl:p-[17px] p-[20px] 3xl:p-[24px] w-[100%]">
           <Column className="lg:ml-[14px] xl:ml-[16px] ml-[18px] 3xl:ml-[21px] lg:pr-[396px] xl:pr-[453px] pr-[510px] 3xl:pr-[612px] w-[69%]">
             <Text className="bg-bluegray_101 font-normal pl-[10px] 3xl:pl-[12px] lg:pl-[7px] xl:pl-[8px] py-[10px] 3xl:py-[12px] lg:py-[7px] xl:py-[8px] rounded-radius10 lg:text-[24px] xl:text-[28px] text-[32px] 3xl:text-[38px] text-black_900 w-[auto]">
