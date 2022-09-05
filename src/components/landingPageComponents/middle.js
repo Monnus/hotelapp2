@@ -28,7 +28,7 @@ console.log("best rooms",bestRooms);
 const navigate=useNavigate();
 function handleBookingsId(id){
  id_image=id;
- navigate("/Bookings")
+ navigate("/Review")
 }
   const bestSelling=bestRooms.map(data=>{
     return(
@@ -141,4 +141,4 @@ function handleBookingsId(id){
   </main>
   )
 }
-export let id_image="";
+export let id_image="room1";

@@ -3,13 +3,35 @@ import React,{useState} from "react";
 import { Column, Stack, Img, Row, Text, Button } from "components";
 import { id_image } from "components/landingPageComponents/middle";
 import { hotalData } from "hotalData";
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+
+import { Link, useNavigate } from "react-router-dom";import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link, useNavigate } from "react-router-dom";
+
+const stateOfcaputureReviewDetail={
+  number_of_adult:null,
+  number_of_children:null,
+  How_many_rooms:null,
+  TV:false,
+  Wifi:false,
+  Breakfast:false,
+  Dinner:false,
+  Launch:false,
+  roomSelected:false,
+  WifiCost:300,
+  TVCost:500,
+  LaunchCost:500,
+  DinnerCost:500,
+  BreakfastCost:500,
+}
+
+
 
 const ReviewPage = () => {
+  (()=>{
+    caputureReviewDetail=stateOfcaputureReviewDetail;
+   })()
   const navigate=useNavigate();
   console.log("id_image",id_image);
   // const reviewPagehotalData=hotalData.map(data );
@@ -17,7 +39,13 @@ const reviewPagehotalData=hotalData.bestRoom.filter(data=>data.id==="room1")
 // console.log(reviewPagehotalData);
  
 console.log(caputureReviewDetail)
+// ==============================Finnish total fn============================================
 
+function handleTotal({ WifiCost,TVCost,DinnerCost,BreakfastCost,LaunchCost}){
+return ((caputureReviewDetail.Wifi||0)||WifiCost)
+}
+// ==============================Finnish total fn============================================
+console.log("finnish total",handleTotal(caputureReviewDetail));
 function handleReviewDetials(id){
   caputureReviewDetail[id]===false?caputureReviewDetail[id]=true:caputureReviewDetail[id]=false;
   console.log(caputureReviewDetail)
@@ -93,11 +121,13 @@ function handleBookingsId(id){
             <Column className="bg-bluegray_100 justify-end lg:mt-[20px] xl:mt-[23px] mt-[26px] 3xl:mt-[31px] lg:p-[14px] xl:p-[16px] p-[19px] 3xl:p-[22px] w-[27%]">
 
             
- <input type="checkbox" id="wifi" name="Wifi" value="Wifi" onClick={(e)=>handleReviewDetials(e.target.value)}/>  <label htmlFor="Wifi" style={{fontSize:"20px"}}>Wifi:R300</label><br/>
-<input type="checkbox" id="TV" name="TV" value="TV"  onClick={(e)=>handleReviewDetials(e.target.value)}/> <label htmlFor="TV" style={{fontSize:"20px"}}>TV:500</label><br/>
-<input type="checkbox" id="Dinner" name="Dinner" value="Dinner"  onClick={(e)=>handleReviewDetials(e.target.value)}/><label htmlFor="Dinner" style={{fontSize:"20px"}}>Dinner:R500</label><br/>
-<input type="checkbox" id="Breakfast" name="Breakfast" value="Breakfast"  onClick={(e)=>handleReviewDetials(e.target.value)}/><label htmlFor="Breakfast" style={{fontSize:"20px"}}>Breakfast:R500</label><br/>
-<input type="checkbox" id="Launch" name="Launch" value="Launch"  onClick={(e)=>handleReviewDetials(e.target.value)}/><label htmlFor="Launch" style={{fontSize:"20px"}}>Launch:R500</label><br/>
+              
+ <input type="checkbox" id="Wifi" name="Wifi" value="Wifi" onClick={(e)=>handleReviewDetials(e.target.value)} defaultChecked={caputureReviewDetail.Wifi===true?true:false }/>  <label htmlFor="Wifi" style={{fontSize:"20px"}}>Wifi:R300</label><br/>
+<input type="checkbox" id="TV" name="TV" value="TV"  onClick={(e)=>handleReviewDetials(e.target.vaue)} defaultChecked={caputureReviewDetail.TV===true?true:false }/> <label htmlFor="TV" style={{fontSize:"20px"}}>TV:500</label><br/>
+<input type="checkbox" id="Dinner" name="Dinner" value="Dinner"  onClick={(e)=>handleReviewDetials(e.target.value)} defaultChecked={caputureReviewDetail.Dinner===true?true:false }/><label htmlFor="Dinner" style={{fontSize:"20px"}}>Dinner:R500</label><br/>
+<input type="checkbox" id="Breakfast" name="Breakfast" value="Breakfast"  onClick={(e)=>handleReviewDetials(e.target.value)} defaultChecked={caputureReviewDetail.Breakfast===true?true:false }/><label htmlFor="Breakfast" style={{fontSize:"20px"}}>Breakfast:R500</label><br/>
+<input type="checkbox" id="Launch" name="Launch" value="Launch"  onClick={(e)=>handleReviewDetials(e.target.value)} defaultChecked={caputureReviewDetail.Launch===true?true:false }/><label htmlFor="Launch" style={{fontSize:"20px"}}>Launch:R500</label><br/>
+
 
 
             
@@ -105,11 +135,13 @@ function handleBookingsId(id){
               {/* ==============================================checkbox for input======================================================= */}
           </Row>
           <Row className="justify-between lg:ml-[28px] xl:ml-[32px] ml-[36px] 3xl:ml-[43px] 3xl:mt-[111px] lg:mt-[72px] xl:mt-[82px] mt-[93px] w-[97%]">
-            <Button onClick={()=>navigate("/Bookings")} className="bg-pink_400 font-normal lg:mt-[46px] xl:mt-[53px] mt-[60px] 3xl:mt-[72px] not-italic outline outline-[1px] outline-black_900_33 lg:py-[17px] xl:py-[20px] py-[23px] 3xl:py-[27px] rounded-radius4 lg:text-[24px] xl:text-[28px] text-[32px] 3xl:text-[38px] text-center text-white_A700 w-[30%]">
+            <Button onClick={()=>{
+              caputureReviewDetail.roomSelected=true
+              navigate("/Bookings")}} className="bg-pink_400 font-normal lg:mt-[46px] xl:mt-[53px] mt-[60px] 3xl:mt-[72px] not-italic outline outline-[1px] outline-black_900_33 lg:py-[17px] xl:py-[20px] py-[23px] 3xl:py-[27px] rounded-radius4 lg:text-[24px] xl:text-[28px] text-[32px] 3xl:text-[38px] text-center text-white_A700 w-[30%]">
               Book Now
             </Button>
             <p style={{height:"80px",width:"120px",border:"1px  solid black",alignItems:"center",padding:"30px 10px " , margin:"0 70px 0 0"} }>
-            Total..{reviewPagehotalData.room_cost.room}
+            Total..
             </p>
           </Row>
         </Column>
@@ -117,13 +149,21 @@ function handleBookingsId(id){
     </>
   );
 };
+
 export let caputureReviewDetail={
   number_of_adult:null,
   number_of_children:null,
   How_many_rooms:null,
   TV:false,
   Wifi:false,
+  Breakfast:false,
   Dinner:false,
   Launch:false,
+  roomSelected:false,
+  WifiCost:300,
+  TVCost:500,
+  LaunchCost:500,
+  DinnerCost:500,
+  BreakfastCost:500,
 }
 export default ReviewPage;
