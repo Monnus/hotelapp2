@@ -22,7 +22,7 @@ console.log(id_image,caputureReviewDetail);
       if(data.id===id_image){
         bookingsArr.add({objID:nanoid(),id_image,...caputureReviewDetail,data}); 
       }
-return {}
+return {};
     })
 
 
@@ -34,46 +34,54 @@ bookingsArr.forEach(value=>{
     return 
     }) 
 
-    console.log("bookingsArr",bookingsArr)
+const handleBtn=(e)=>{
+  if(e.target.id=="delete"){
+    renderArr.forEach((data,i,arr)=>{
+      if(data.data.id===e.target.dataset.id){
+      console.log(data,i);
+      renderArr.splice(1);
+      
+      alert("bookings removed");
+    }
+  })
+  }
+console.log(e.target.dataset.id);
+}
     console.log("renderArr",renderArr)
 
     const renderJsx=renderArr.map(dataArr=>{
       return(
         <>
-        
-        <Row className="bg-white_A700 items-center lg:my-[19px] xl:my-[21px] my-[24.5px] 2xl:my-[24px] 3xl:my-[29px] lg:p-[15px] xl:p-[17px] p-[20px] 3xl:p-[24px] w-[100%]">
+        <Row className="bg-white_A700 items-center lg:my-[19px] xl:my-[21px] my-[24.5px] 
+        2xl:my-[24px] 3xl:my-[29px] lg:p-[15px] xl:p-[17px] p-[20px] 3xl:p-[24px] w-[100%]" key={dataArr.objID}>
         <Box
-      sx={{
+       sx={{
         display:"flex",
         flexDirection:"column",
         width: 700,
         marginRight:"100px",
-          justifyContent:"space-around",
-
-
+        justifyContent:"space-around",
         height: "100%",
-        backgroundColor: 'lightgray ',
+       
         '&:hover': {
           backgroundColor: 'primary.main',
           opacity: [0.9, 0.8, 0.7],
         },
       }}
     >
-<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px", borderRadius:"10px",background:"gray",alignContent:"center"}}><h2>@Hotal {dataArr.data.title}</h2></div>
+<div style={{fontSize:"30px",
+fontWeight:"500",width:"70%",height:"50px", borderRadius:"10px",background:"lightgray",alignContent:"center"}}><h2>@Hotal {dataArr.data.title}</h2></div>
 
-<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"gray"}}>Room cost {dataArr.data.room_cost.room}</div>
-<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"gray"}}>
+<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"lightgray"}}>Room cost {dataArr.data.room_cost.room}</div>
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"lightgray"}}>
   Room type:<br></br>
 Room :X_</div>
 
-<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"70px",borderRadius:"10px",background:"gray"}}>
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"70px",borderRadius:"10px",background:"lightgray"}}>
 stay:3days adults:2
-
-
 hospitalization:luxery: children:0
 </div>
         </Box>
-
           <Column className="items-center w-[29%]">
           <Box
       sx={{
@@ -85,8 +93,7 @@ hospitalization:luxery: children:0
           backgroundColor: 'primary.main',
           opacity: [0.9, 0.8, 0.7],
         },
-      }}
-    >
+      }}>
             <Img
               src={dataArr.data.picture}
               className="lg:h-[181px] xl:h-[207px] h-[232px] 2xl:h-[233px] 3xl:h-[279px] w-[100%]"
@@ -94,8 +101,9 @@ hospitalization:luxery: children:0
             />
         </Box>
         <div style={{display:"flex",height:"auto",width:"100%",justifyContent:"space-between"}}>
-          <Button color="error" size="large" variant="contained" startIcon={<DeleteIcon/>}>Delete</Button>
-          <Button  size="large" variant="contained" endIcon={<SendIcon />}>Accept</Button>
+     <Button id="delete" data-id={dataArr.data.id} 
+      color="error" size="large" variant="contained" startIcon={<DeleteIcon/>} onClick={handleBtn}>Delete</Button>
+    <Button id="booking" data-id={dataArr.data.id} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleBtn}>Accept</Button>
         </div>
 
           </Column>
