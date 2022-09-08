@@ -166,4 +166,5 @@ export let caputureReviewDetail={
   DinnerCost:500,
   BreakfastCost:500,
 }
+
 export default ReviewPage;
