@@ -4,7 +4,8 @@ import { Column, Stack, Img, Row, Text, Button } from "components";
 import { id_image } from "components/landingPageComponents/middle";
 import { hotalData } from "hotalData";
 
-import { Link, useNavigate } from "react-router-dom";import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+import { Link, useNavigate } from "react-router-dom";
+import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';

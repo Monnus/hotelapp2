@@ -1,4 +1,4 @@
-
+import "hotalData";
 export let hotalData={
 "bestRoom":[
     
