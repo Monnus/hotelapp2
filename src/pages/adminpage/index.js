@@ -5,9 +5,21 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import app from "firebaseConfig";
-import {getStorage,ref,uploadBytesResumable} from "firebase/storage";
+import {getStorage} from "firebase/storage";
 import { Link,useNavigate } from "react-router-dom";
 import { UserContext } from "App";
+import FabBtn from "components/fab/fab";
+import TabsCreated from "components/Tabs/tabs";
+import { Box } from "@mui/system";
+
+
+
+
+
+
+
+
+
 
 const AdminPage=()=>{
 
@@ -19,41 +31,7 @@ const AdminPage=()=>{
 
 
 
-function onSumbmitImage(e){
-    e.preventDefault();
-    if(!e.target[0].value) return alert("please fill in ID field");
-    if(!e.target[1].value) return alert("please fill in Title feild");
-    if(!e.target[2].value) return alert("You have not inserted an amount");
-    if(!e.target[3].value) return alert("please give your room a description in discription field");
-    if(!e.target[4].files[0].name) return alert("please upload a Image");
 
-const newRoomObj={
-id:e.target[0].value,
-title:e.target[1].value,
-picture:e.target[4].files[0].name,
-state:false,
-description:e.target[3].value,
-"booked":false,
-color:"orange",
-room_cost:{
-    room:+e.target[2].value,
-}
-}
-    hotalData.bestRoom.push(newRoomObj)
-  
-
-            const metadata = {
-        contentType: e.target[4].files[0].type
-      };
-    const storage= getStorage(app);
-    const storageRef=ref(storage,`rooms/${e.target[4].files[0].name}`);
-  
-    uploadBytesResumable(storageRef,e.target.files[0],metadata).then(res=>{
-    console.log(res,"file uploaded");
-   }).catch(err=>console.error(err))
-  
-    return alert("room successfully created")
-}
 
 return (
 <>
@@ -79,33 +57,38 @@ return (
 </nav>
     </div>
 
+{/* =========================Tabs========================================== */}
+<div style={{display:"flex",flexDirection:"row",width:"100%",height:"auto",justifyContent:"space-around"}}>
+  <TabsCreated/>   
+  <Box sx={{position:"relative",top:"22px",width:"25%",height:"55vh",backgroundColor:"#F5f5f5" }}>
+    <h1 style={{color:"white",marginTop:"10px",marginLeft:"50px",textAlign:"center", padding:"0 0",width:"70%",height:"40px",backgroundColor:"#048BCC",fontSize:"25px"}}>Bookings summery</h1>
+  <h2 style={{color:"white",
+  marginTop:"15px",
+  textAlign:"center",
+   padding:"0 0",width:"100%",height:"40px",
+   backgroundColor:"lightgray",fontSize:"25px"}}>@Hotel Crown Plaza</h2>
+
+<p style={{padding:"0 15px",margin:"10px 0"}}>2 bedroom Jungle theme        8days</p>
+<p style={{padding:"0 15px",margin:"10px 0"}}>R1080 room/night</p>
+<Box sx={{height:"200px",backgroundColor:"lightgray"}} pl={10} mb={10}>
+
+<p>Gross X2 rooms</p>
+<p>Extras</p>
+<p>-bottle champian</p>
+<p>-breakfast</p>
+<p>-wifi</p>
+<p>-Tv</p>
 
 
-            <div style={{height:"100vh",width:"100%"}}>
+</Box>
 
-        <form onSubmit={onSumbmitImage}>
-            <label htmlFor="id">id</label>
-            <br/>
-            <input type="text" id="id" placeholder="Id for the room"/>
-            <br/>
-            <label htmlFor="name">Name of room</label>
-            <br/>
-            <input type="text" id="name" placeholder="Name of room" /> 
-            <br/>
-            <label htmlFor="PriceOfRooms">Price</label>
-            <br/>
-            <input type="number" id="PriceOfRooms" placeholder="numbr"/>
-            <br/>
-            <label htmlFor="description">insert description</label>
-            <br/>
-            <textarea placeholder="imput description" id="description"/>  
-            <br/>
-            <input type="file" />
-            <br/>
-  < button type="submit"  style={{backgroundColor:"lightgreen", height:"50px", width:"100px"}}>Submit</button>
-        </form>
-            
-        </div>
+
+<h3 style={{height:"100px",width:"100%",backgroundColor:"lightgray",textAlign:"center",fontSize:"20px"}}>Bookings Total                            R2080 </h3>
+
+    </Box>     
+</div>
+<FabBtn/>
+
 
         </>
             )

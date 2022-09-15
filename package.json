@@ -20,6 +20,8 @@
     "react-router-dom": "6.0.2",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "5.0.0",
+    "react-simple-tabs-component": "^2.1.1",
+    "reactjs-popup": "^2.0.5",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

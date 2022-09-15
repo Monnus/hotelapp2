@@ -1,9 +1,9 @@
 import "hotalData";
+import { nanoid } from "nanoid";
 export let hotalData={
 "bestRoom":[
-    
     {
-        "id":"room1",
+        "id":nanoid(),
         title:"browny cake",
         "picture":require('./assets/hotelmages/rooms/hotroom1.jpg'),
         "state":false,
@@ -16,7 +16,7 @@ export let hotalData={
         
     },
     {
-        "id":"room2",
+        "id":nanoid(),
         title:"Two bedroom plus white snowy",
         "picture":require('./assets/hotelmages/rooms/hotroom2.jpg'),
         "state":false,
@@ -28,7 +28,7 @@ export let hotalData={
         }
     },
     {
-        "id":"room3",
+        "id":nanoid(),
         title:"first class Glowxxx",
         "picture":require('./assets/hotelmages/rooms/hotroom3.jpg'),
         "state":false,
@@ -40,7 +40,7 @@ export let hotalData={
         } 
     },
     {
-        "id":"room4",
+        "id":nanoid(),
         title:"Open ended skyblue",
         "picture":require('./assets/hotelmages/rooms/hotroom4.jpg'),
         "state":false, 
@@ -52,7 +52,7 @@ export let hotalData={
         }
     },
     {
-        "id":"room5",
+        "id":nanoid(),
         title:"2 bedroom red beary",
         "picture":require('./assets/hotelmages/rooms/hotroom5.jpg'),
         "state":false,
@@ -63,7 +63,11 @@ export let hotalData={
             room:3000
         }
     }
-]
+  
+],
+"AdminaddRoom":[
+
+],
 
 
 }
