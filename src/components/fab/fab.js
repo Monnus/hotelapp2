@@ -11,11 +11,11 @@ import {getStorage,ref,uploadBytesResumable} from "firebase/storage";
 import { nanoid } from "nanoid";
 
 
-const FabBtn=({color="#0065C4"})=>{
-  const hotalData=useContext(UserContext);
+const FabBtn=({color="#0065C4",getcomboRoomNewandold})=>{
+  const hotelData=useContext(UserContext);
 
   // console.log(getStorage(app));
-  console.log(hotalData);
+  // console.log(hotelData);
 
   function onSumbmitImage(e){
     console.log(e);
@@ -26,6 +26,7 @@ const FabBtn=({color="#0065C4"})=>{
     if(!e.target[3].value) return alert("please give your room a description in discription field");
     if(!e.target[4].files[0].name) return alert("please upload a Image");
 
+    console.log("upload files",e.target[4].files);
 const newRoomObj={
 id:nanoid(),
 title:e.target[1].value,
@@ -40,18 +41,20 @@ room_cost:{
     room:+e.target[2].value,
 }
 }
-    hotalData.AdminaddRoom.push(newRoomObj);
-  
+    hotelData.AdminaddRoom.push(newRoomObj);
+    getcomboRoomNewandold([...hotelData.returnAdminaddRoom(),...hotelData.bestRoom,])
 
-            const metadata = {
-        contentType: e.target[4].files[0].type
-      };
-    const storage= getStorage(app);
-    const storageRef=ref(storage,`rooms/${e.target[4].files[0].name}`);
+
+
+  //           const metadata = {
+  //       contentType: e.target[4].files[0].type
+  //     };
+  //   const storage= getStorage(app);
+  //   const storageRef=ref(storage,`rooms/${e.target[4].files[0].name}`);
   
-    uploadBytesResumable(storageRef,e.target.files[0],metadata).then(res=>{
-    console.log(res,"file uploaded");
-   }).catch(err=>console.error(err))
+  //   uploadBytesResumable(storageRef,e.target[4].files[0],metadata).then(res=>{
+  //   console.log(res,"file uploaded");
+  //  }).catch(err=>console.error(err))
   
     return alert("room successfully created")
 }

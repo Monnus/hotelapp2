@@ -68,6 +68,9 @@ export let hotalData={
 "AdminaddRoom":[
 
 ],
+returnAdminaddRoom(){
+    return this.AdminaddRoom
+}
 
 
 }

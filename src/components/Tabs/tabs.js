@@ -5,7 +5,7 @@ import {Tabs} from "react-simple-tabs-component";
 import "react-simple-tabs-component/dist/index.css";
 import { UserContext } from 'App';
 import React,{useContext,useState,useEffect} from 'react';
-import { hotalData } from 'hotalData';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -14,16 +14,12 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-function TabsCreated() {
+function TabsCreated({comboRoomNewandold}) {
 
   const hotelData=useContext(UserContext);
-  const [comboRoomNewandold, getcomboRoomNewandold]=useState([...hotalData.bestRoom]);
-  console.log(comboRoomNewandold);
+
 // const comboRoomNewandold=[...hotalData.AdminaddRoom,...hotalData.bestRoom];
-useEffect(()=>{
-  getcomboRoomNewandold([...comboRoomNewandold,...hotalData.AdminaddRoom]);
-  
-},[hotelData.AdminaddRoom]);
+
 console.log(comboRoomNewandold);
 // console.log("hotal Data in tabs", hotelData);
     const TabOne=()=>{
@@ -39,7 +35,7 @@ console.log(comboRoomNewandold);
       return(
         <div style={tabsStyles.container}>
           <List sx={{position:"relative", width: '100%', maxWidth:"100%", bgcolor: 'gray' }}>
-            {hotalData.AdminaddRoom==false&&hotalData.bestRoom==false?noData:comboRoomNewandold?comboRoomNewandold.map(data=>{
+            {hotelData.AdminaddRoom==false&&hotelData.bestRoom==false?noData:comboRoomNewandold?comboRoomNewandold.map(data=>{
                   if(data.isNew){
                     return (
                       <>
