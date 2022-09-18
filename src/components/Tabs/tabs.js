@@ -14,7 +14,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-function TabsCreated({comboRoomNewandold}) {
+function TabsCreated({comboRoomNewandold,setSelectObjSummery}) {
 
   const hotelData=useContext(UserContext);
 
@@ -39,7 +39,7 @@ console.log(comboRoomNewandold);
                   if(data.isNew){
                     return (
                       <>
-                      <ListItem alignItems="flex-start" key={data.id}>
+                      <ListItem alignItems="flex-start" key={data.id} onClick={()=>setSelectObjSummery(data)}>
                         <ListItemAvatar>
                           <Avatar alt={data.title} src={data.picture} />
                         </ListItemAvatar>
@@ -68,7 +68,7 @@ console.log(comboRoomNewandold);
                   }
                   return(
                     <>
-                    <ListItem alignItems="flex-start" key={data.id}>
+                    <ListItem alignItems="flex-start" key={data.id} onClick={()=>setSelectObjSummery(data)}>
                       <ListItemAvatar>
                         <Avatar alt={data.title} src={data.picture} />
                       </ListItemAvatar>

@@ -30,7 +30,8 @@ const AdminPage=()=>{
 
 
 const [comboRoomNewandold, getcomboRoomNewandold]=useState([...hotalData.AdminaddRoom,...hotalData.bestRoom]);
-
+const [selectObjSummery,setSelectObjSummery]=useState("")
+console.log("setSelectObjSummery",selectObjSummery);
                                                 
 
 
@@ -41,26 +42,35 @@ return (
     justifyContent:"center",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center",marginBottom:"20px"}}>
 <nav style={{height:"100px"}}>
 <ul style={{}}>
+
+  <Link to="/">
 <li style={{display:"inline-block",alignContent:"center"}}>
   < OtherHousesIcon  fontSize="large"/>
   Home
 </li>
+  </Link>
+  <Link to="/AdnimPage">
 <li style={{display:"inline-block"}}>
  <SupervisorAccountIcon fontSize="large"/> Admin 
 </li>
+  </Link>
+  <Link to="/Bookings">
 <li style={{display:"inline-block"}}>
  <LibraryBooksIcon fontSize="LibraryBooksIcon"/> bookings
 </li>
+  </Link>
+  <Link to='/'>
 <li style={{display:"inline-block"}}>
   <LogoutIcon fontSize="large "/>logout
 </li>
+  </Link>
 </ul>
 </nav>
     </div>
 
 {/* =========================Tabs========================================== */}
 <div style={{display:"flex",flexDirection:"row",width:"100%",height:"auto",justifyContent:"space-around"}}>
-  <TabsCreated  comboRoomNewandold={comboRoomNewandold}/>   
+  <TabsCreated  comboRoomNewandold={comboRoomNewandold} setSelectObjSummery={setSelectObjSummery}/>   
 
   <Box sx={{position:"relative",top:"22px",width:"25%",height:"55vh",backgroundColor:"#F5f5f5" }}>
     <h1 style={{color:"white",marginTop:"10px",marginLeft:"50px",textAlign:"center", padding:"0 0",width:"70%",height:"40px",backgroundColor:"#048BCC",fontSize:"25px"}}>Bookings summery</h1>

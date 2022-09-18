@@ -14,13 +14,13 @@ function App() {
     <div className="App">
     <UserContext.Provider value={hotalData}>
 <Routes>
-<Route path="/landingPage" element={<LandingPage/>}/>  
+<Route path="/" element={<LandingPage/>}/>  
 <Route path="/register" element={<SigninPage/>}/>
 <Route path="/signin" element={<LoginuserPage/>}/>
 <Route path="/AdminsigninPage" element={<AdminsigninPage/>} />
 <Route path='/review' element={<ReviewPage/>} />
 <Route path='/Bookings' element={<BookingspagePage/>}  />
-<Route path="/" element={<AdminPage/>} />
+<Route path="/AdnimPage" element={<AdminPage/>} />
 </Routes>
       </UserContext.Provider>
     </div>
