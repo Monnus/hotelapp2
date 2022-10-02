@@ -29,49 +29,44 @@ const AdminPage=()=>{
 // ========================firebase upload==========================
 
 
-const [comboRoomNewandold, getcomboRoomNewandold]=useState([...hotalData.AdminaddRoom,...hotalData.bestRoom]);
-const [selectObjSummery,setSelectObjSummery]=useState("")
-console.log("setSelectObjSummery",selectObjSummery);
-                                                
+//=========================handle signOut===============================
+const handleSignOut=()=>{
+
+}
+
 
 
 return (
 <>
 
-    <div style={{height:"280px",width:"100%",backgroundColor:"skyblue",display:"flex", position:"relative",
+<div style={{height:"280px",width:"100%",backgroundColor:"skyblue",display:"flex", position:"relative",
     justifyContent:"center",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center",marginBottom:"20px"}}>
 <nav style={{height:"100px"}}>
 <ul style={{}}>
-
-  <Link to="/">
 <li style={{display:"inline-block",alignContent:"center"}}>
-  < OtherHousesIcon  fontSize="large"/>
+  <Link to="/">< OtherHousesIcon  fontSize="large"/></Link>
   Home
 </li>
-  </Link>
-  <Link to="/AdnimPage">
 <li style={{display:"inline-block"}}>
+ <Link to="/AdminPage">
  <SupervisorAccountIcon fontSize="large"/> Admin 
+ </Link>
 </li>
-  </Link>
-  <Link to="/Bookings">
 <li style={{display:"inline-block"}}>
+  <Link to="/Bookings">
  <LibraryBooksIcon fontSize="LibraryBooksIcon"/> bookings
-</li>
   </Link>
-  <Link to='/'>
+</li>
 <li style={{display:"inline-block"}}>
   <LogoutIcon fontSize="large "/>logout
 </li>
-  </Link>
 </ul>
 </nav>
     </div>
 
 {/* =========================Tabs========================================== */}
 <div style={{display:"flex",flexDirection:"row",width:"100%",height:"auto",justifyContent:"space-around"}}>
-  <TabsCreated  comboRoomNewandold={comboRoomNewandold} setSelectObjSummery={setSelectObjSummery}/>   
-
+  <TabsCreated/>   
   <Box sx={{position:"relative",top:"22px",width:"25%",height:"55vh",backgroundColor:"#F5f5f5" }}>
     <h1 style={{color:"white",marginTop:"10px",marginLeft:"50px",textAlign:"center", padding:"0 0",width:"70%",height:"40px",backgroundColor:"#048BCC",fontSize:"25px"}}>Bookings summery</h1>
   <h2 style={{color:"white",
@@ -95,12 +90,11 @@ return (
 </Box>
 
 
-<h3 style={{height:"100px",width:"100%",backgroundColor:"lightgray",
-textAlign:"center",fontSize:"20px"}}>Bookings Total                            R2080 </h3>
+<h3 style={{height:"100px",width:"100%",backgroundColor:"lightgray",textAlign:"center",fontSize:"20px"}}>Bookings Total                            R2080 </h3>
 
     </Box>     
 </div>
-<FabBtn getcomboRoomNewandold={getcomboRoomNewandold}/>
+<FabBtn/>
 
 
         </>

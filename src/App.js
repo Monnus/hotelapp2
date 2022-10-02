@@ -16,11 +16,11 @@ function App() {
 <Routes>
 <Route path="/" element={<LandingPage/>}/>  
 <Route path="/register" element={<SigninPage/>}/>
-<Route path="/signin" element={<LoginuserPage/>}/>
+<Route path="/loginPage" element={<LoginuserPage/>}/>
 <Route path="/AdminsigninPage" element={<AdminsigninPage/>} />
 <Route path='/review' element={<ReviewPage/>} />
 <Route path='/Bookings' element={<BookingspagePage/>}  />
-<Route path="/AdnimPage" element={<AdminPage/>} />
+<Route path="/AdminPage" element={<AdminPage/>} />
 </Routes>
       </UserContext.Provider>
     </div>

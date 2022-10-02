@@ -10,9 +10,7 @@ import {hotRoomsObj} from "../media"
 export default function LandingPage() {
   const [id,setId]=useState(null);
   console.log(id);
-useEffect(()=>{
-  console.log(id);
-},[id])
+
   return (
     <div  className='Page'>
         <Header/>

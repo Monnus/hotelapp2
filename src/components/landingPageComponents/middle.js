@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { parse } from 'postcss';
 import { hotalData } from 'hotalData';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { UserContext } from 'App';
 
 
 export default function Middle({hotRoomsObj}) {
@@ -21,8 +22,8 @@ const theme=createTheme({
     }
   }
 })
-const {bestRoom:bestRooms}=hotalData;
-console.log("best rooms",bestRooms);
+const hotalData=useContext(UserContext);
+console.log("best rooms",hotalData.bestRooms);
 
   // console.log(hotRoomsObj);
 const navigate=useNavigate();
@@ -30,10 +31,12 @@ function handleBookingsId(id){
  id_image=id;
  navigate("/Review")
 }
-  const bestSelling=bestRooms.map(data=>{
+  const newRoom=hotalData.NewRooms.map(data=>{
     return(
       <>
-      <Card sx={{ maxWidth: 345 }} key={data.id} style={{margin:"10px",padding:"auto",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <Card sx={{ maxWidth: 345 }} key={data.id} style={{position:"relative",margin:"10px",padding:"auto",display:"flex",flexDirection:"column",alignItems:"center"}}>
+      <h2 style={{position:"absolute",right:"10px",top:"0px",textAlign:"center",fontSize:"30px",height:"60px",width:"90px",borderRadius:"100px",color:"white",fontWeight:"800",backgroundImage:"linear-gradient(to top, #4880EC, #019CAD)"}}>New</h2>
+     
       <CardMedia
         component="img"
         height="140"
@@ -57,7 +60,35 @@ function handleBookingsId(id){
       </>
     )
   })
+const bestSelling=hotalData.bestRoom.map(data=>{
+  return(
+    <>
+    <Card sx={{ maxWidth: 345 }} key={data.id} style={{position:"relative",margin:"10px",padding:"auto",display:"flex",flexDirection:"column",alignItems:"center"}}>
+    <h2 style={{position:"absolute",right:"10px",top:"0px",textAlign:"center",fontSize:"30px",height:"60px",width:"90px",borderRadius:"100px",color:"white",fontWeight:"800",backgroundImage:"linear-gradient(to top, #4880EC, #019CAD)"}}>New</h2>
+   
+    <CardMedia
+      component="img"
+      height="140"
+      image={data.picture}
+      alt=""
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        {data.title}
+      </Typography>
+   
+    </CardContent>
+    <CardActions>
+     <ThemeProvider theme={theme}>
+      <Button color="bookingscolor" variant="contained" 
+      style={{fontWeight:"600"}} size="small" onClick={()=>handleBookingsId(data.id)}>Review</Button>
+     </ThemeProvider>
 
+    </CardActions>
+  </Card>
+    </>
+  )
+})
 
   return (
   <main>
@@ -121,7 +152,7 @@ function handleBookingsId(id){
 
 
 
-{bestSelling}
+{newRoom}
 
 
 </Box>
@@ -130,10 +161,10 @@ function handleBookingsId(id){
 <br></br>
 
 <Container maxWidth="lg" sx={{width:"100%"}}>
-<h2 style={{margin:"0 0 20px 50%",textAlign:"center",color:"white",width:"200px",height:"60px",background:"#048BCC",lineHeight:"60px"}}>Rooms</h2>
+
+<h3 style={{margin:"0 0 20px 50%",textAlign:"center",color:"white",width:"200px",height:"60px",background:"#048BCC",lineHeight:"60px"}}>Rooms</h3>
 <Box sx={{maxHeight:"auto",width:"auto",boxShadow:" 0 0 10px #F5F5F5",display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
-
-
+{bestSelling}
 </Box>
 </Container>
 </section>
