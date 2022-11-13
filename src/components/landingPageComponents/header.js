@@ -8,7 +8,11 @@ import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSetting
 import BookRoundedIcon from '@mui/icons-material/BookRounded';
 import profileImage from "../../pages/Images/Frame33_Ellipse3.png"
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import app from 'firebaseConfig';
+import { getAuth, signOut } from 'firebase/auth';
+
 export default function Header() {
+  const auth=getAuth(app)
   return (
   <>
     <Box sx={{width:"100%",height:"500px", backgroundColor:"#048BCC", margin:"0 0 70px 0"}}>
@@ -16,9 +20,9 @@ export default function Header() {
         <img src={logo} className="logo" alt=""/>
         <ul style={{float:"right",display:"inline-block"}}>
       <Link to="/"><HomeIcon sx={{ fontSize: 40 }} /> <li style={{display:"inline-block"}}>Home</li></Link>
-       <Link to="/admin">  <AdminPanelSettingsRoundedIcon sx={{fontSize:40}}/><li style={{display:"inline-block"}}>admin</li></Link>
+       <Link to="/AdminsigninPage">  <AdminPanelSettingsRoundedIcon sx={{fontSize:40}}/><li style={{display:"inline-block"}}>admin</li></Link>
          <Link to="/Bookings">  <BookRoundedIcon sx={{fontSize:40}}/><li style={{display:"inline-block"}}>Bookings</li></Link>
-         <LogoutRoundedIcon sx={{fontSize:40}}/><li style={{display:"inline-block"  }}>logout</li>
+      <Link Link to="/ "onClick={()=>signOut(auth)}>   <LogoutRoundedIcon sx={{fontSize:40}}/><li style={{display:"inline-block"  }}>logout</li></Link>
         </ul>
       </nav>
       <div style={{backgroundImage:`url(${hotelImage})`,width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center",height:"80%",display:"flex",justifyContent:"center"}}>

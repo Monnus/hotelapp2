@@ -11,6 +11,7 @@ import { UserContext } from "App";
 import FabBtn from "components/fab/fab";
 import TabsCreated from "components/Tabs/tabs";
 import { Box } from "@mui/system";
+import { getAuth, signOut } from "firebase/auth";
 
 
 
@@ -22,7 +23,7 @@ import { Box } from "@mui/system";
 
 
 const AdminPage=()=>{
-
+const auth=getAuth();
     const hotalData=useContext(UserContext);
 
     console.log(getStorage(app));
@@ -58,7 +59,7 @@ return (
   </Link>
 </li>
 <li style={{display:"inline-block"}}>
-  <LogoutIcon fontSize="large "/>logout
+  <Link to="/" onClick={()=>signOut(auth)}><LogoutIcon fontSize="large " />logout</Link>
 </li>
 </ul>
 </nav>

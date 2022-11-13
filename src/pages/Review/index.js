@@ -11,7 +11,7 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { object } from "prop-types";
-
+import { getAuth, signOut } from "firebase/auth";
 
 
 //beginning of review page
@@ -49,6 +49,7 @@ const [addedOptions,setAddedOptions]=useState({
    const hotalData=useContext(UserContext);
    console.log("hotalData",hotalData);
 
+   const auth=getAuth()
   const navigate=useNavigate();
   console.log("id_image",id_image);
 
@@ -99,17 +100,17 @@ function handleBookingsId(id){
 <nav style={{height:"100px"}}>
 <ul style={{}}>
 <li style={{display:"inline-block",alignContent:"center"}}>
-  < OtherHousesIcon  fontSize="large"/>
+ <Link to="/"> < OtherHousesIcon  fontSize="large"/></Link>
   Home
 </li>
 <li style={{display:"inline-block"}}>
- <SupervisorAccountIcon fontSize="large"/> Admin 
+ <Link to="/AdminsigninPage"><SupervisorAccountIcon fontSize="large"/> Admin</Link> 
 </li>
 <li style={{display:"inline-block"}}>
- <LibraryBooksIcon fontSize="LibraryBooksIcon"/> bookings
+ <Link to="/Bookings"><LibraryBooksIcon fontSize="LibraryBooksIcon"/> bookings</Link>
 </li>
-<li style={{display:"inline-block"}}>
-  <LogoutIcon fontSize="large "/>logout
+<li style={{display:"inline-block",cursor:"pointer"}}>
+ <Link to="/ "onClick={()=>signOut(auth)}> <LogoutIcon fontSize="large " />logout</Link>
 </li>
 </ul>
 </nav>
