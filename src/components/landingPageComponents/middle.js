@@ -29,7 +29,8 @@ console.log("best rooms",hotalData.bestRooms);
 const navigate=useNavigate();
 function handleBookingsId(id){
  id_image=id;
- navigate("/Review")
+console.log(id);
+ navigate("/review")
 }
   const newRoom=hotalData.NewRooms.map(data=>{
     return(
@@ -64,13 +65,12 @@ const bestSelling=hotalData.bestRoom.map(data=>{
   return(
     <>
     <Card sx={{ maxWidth: 345 }} key={data.id} style={{position:"relative",margin:"10px",padding:"auto",display:"flex",flexDirection:"column",alignItems:"center"}}>
-    <h2 style={{position:"absolute",right:"10px",top:"0px",textAlign:"center",fontSize:"30px",height:"60px",width:"90px",borderRadius:"100px",color:"white",fontWeight:"800",backgroundImage:"linear-gradient(to top, #4880EC, #019CAD)"}}>New</h2>
    
     <CardMedia
       component="img"
       height="140"
       image={data.picture}
-      alt=""
+      alt="Room Images"
     />
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">

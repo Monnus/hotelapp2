@@ -52,6 +52,18 @@ export let hotalData={
         }
     },
     {
+        "id":"room1",
+        title:"Open ended skyblue",
+        "picture":require('./assets/hotelmages/rooms/hotroom4.jpg'),
+        "state":false, 
+        description:"belcony door view indoor jacuzzy 10 chair table Tv and wifi included",
+        "booked":false,
+        color:"orange",
+        room_cost:{
+            room:15000
+        }
+    },
+    {
         "id":nanoid(),
         title:"2 bedroom red beary",
         "picture":require('./assets/hotelmages/rooms/hotroom5.jpg'),
@@ -71,7 +83,7 @@ export let hotalData={
     title:"2 bedroom red beary",
     "state":false,
     "booked":false,
-    "picture":require("https://th.bing.com/th/id/OIP.pgwsltpyBCrP3MetrHHxywHaEl?w=256&h=180&c=7&r=0&o=5&pid=1.7"),
+    "picture":"https://th.bing.com/th/id/OIP.pgwsltpyBCrP3MetrHHxywHaEl?w=256&h=180&c=7&r=0&o=5&pid=1.7",
     description:"",
     color:"orange",
     room_cost:{
@@ -82,7 +94,7 @@ export let hotalData={
     title:"2 bedroom red beary",
     "state":false,
     "booked":false,
-    "picture":require("https://th.bing.com/th/id/OIP.RUjcBXGBGN3lFUCCsL7QfwHaE7?w=236&h=180&c=7&r=0&o=5&pid=1.7"),
+    "picture":"https://th.bing.com/th/id/OIP.RUjcBXGBGN3lFUCCsL7QfwHaE7?w=236&h=180&c=7&r=0&o=5&pid=1.7",
     description:"",
     color:"orange",
     room_cost:{
@@ -93,7 +105,7 @@ export let hotalData={
     title:"2 bedroom red beary",
     "state":false,
     "booked":false,
-    "picture":require("https://th.bing.com/th/id/OIP.1cc4aSnF9JP9Hf0_Ct1-AQHaDt?w=305&h=174&c=7&r=0&o=5&pid=1.7"),
+    "picture":"https://th.bing.com/th/id/OIP.1cc4aSnF9JP9Hf0_Ct1-AQHaDt?w=305&h=174&c=7&r=0&o=5&pid=1.7",
     description:"",
     color:"orange",
     room_cost:{
@@ -104,7 +116,7 @@ export let hotalData={
     title:"2 bedroom red beary",
     "state":false,
     "booked":false,
-    "picture":require("https://th.bing.com/th?q=Dubai+Hotel+Rooms&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-ZA&cc=ZA&setlang=en&adlt=moderate&t=1&mw=247"),
+    "picture":"https://th.bing.com/th?q=Dubai+Hotel+Rooms&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-ZA&cc=ZA&setlang=en&adlt=moderate&t=1&mw=247",
     description:"",
     color:"orange",
     room_cost:{

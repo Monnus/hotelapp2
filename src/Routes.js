@@ -1,26 +1,27 @@
 import React from "react";
-import Bookingspage from "pages/Bookingspage";
-import Signin from "pages/Signin";
-import Loginuser from "pages/Loginuser";
-import Adminsignin from "pages/Adminsignin";
-import Review from "pages/Review";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "pages/Home";
 import NotFound from "pages/NotFound";
-
+import SigninPage from "pages/Signin";
+import LoginuserPage from "pages/Loginuser";
+import AdminsigninPage from "pages/Adminsignin";
+import ReviewPage from "pages/Review";
+import BookingspagePage from "pages/Bookingspage";
+import AdminPage from "pages/adminpage";
+import LandingPage from "pages/landingPage";
 const ProjectRoutes = () => {
   return (
-    <Router>
+
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<LandingPage/>}/>  
+      <Route path="/register" element={<SigninPage/>}/>
+      <Route path="/loginPage" element={<LoginuserPage/>}/>
+      <Route path="/AdminsigninPage" element={<AdminsigninPage/>} />
+      <Route path='/review' element={<ReviewPage/>} />
+      <Route path='/Bookings' element={<BookingspagePage/>}  />
+      <Route path="/AdminPage" element={<AdminPage/>} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/review" element={<Review />} />
-        <Route path="/adminsignin" element={<Adminsignin />} />
-        <Route path="/loginuser" element={<Loginuser />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/bookingspage" element={<Bookingspage />} />
       </Routes>
-    </Router>
+
   );
 };
 
