@@ -7,15 +7,18 @@ import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Box } from "@mui/system";
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+import { Box } from "@mui/system";
 import { UserContext } from "App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
+
+
 const BookingspagePage = () => {
+  const navigator=useNavigate();
   const hotalData=useContext(UserContext);
 const auth=getAuth();
   const bookingsArr= new Set([]);
@@ -61,8 +64,17 @@ const handleBtn=(e)=>{
       alert("bookings removed");
     }
   })
+  }else if(e.target.id==="booking"){
+    for(let i=0;i<renderArr.length;i++){
+      if(renderArr[i].id===e.target.dataset.id){
+        renderArr[i].booked=true;
+      console.log("e.target.dataset.id",e.target.dataset.id,"renderArr[i].id",renderArr[i].id,"renderArr[i]",renderArr[i]);
+      hotalData.Users.push(renderArr[i]);
+      }
+    }
+  navigator("/payments")
   }
-console.log(e.target.dataset.id);
+// console.log(e.target.dataset.id);
 }
     console.log("renderArr",renderArr)
 

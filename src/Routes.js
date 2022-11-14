@@ -8,6 +8,7 @@ import ReviewPage from "pages/Review";
 import BookingspagePage from "pages/Bookingspage";
 import AdminPage from "pages/adminpage";
 import LandingPage from "pages/landingPage";
+import PaymentPage from "./pages/PaymentPage"
 const ProjectRoutes = () => {
   return (
 
@@ -19,6 +20,7 @@ const ProjectRoutes = () => {
       <Route path='/review' element={<ReviewPage/>} />
       <Route path='/Bookings' element={<BookingspagePage/>}  />
       <Route path="/AdminPage" element={<AdminPage/>} />
+      <Route path="/payments" element={<PaymentPage/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
