@@ -24,8 +24,8 @@ const auth=getAuth();
   const bookingsArr= new Set([]);
   let renderArr=[];
   // bookingsArr.clear()
-  console.log(id_image,caputureReviewDetail);
-  // console.log("hotalData",hotalData); 
+
+  console.log("hotalData",hotalData); 
 
   if(caputureReviewDetail.roomSelected){
    const newObj= Object.keys(hotalData).flatMap(name=>{
@@ -77,6 +77,75 @@ const handleBtn=(e)=>{
 // console.log(e.target.dataset.id);
 }
     console.log("renderArr",renderArr)
+
+const renderUserarr=hotalData.Users.map(obj=>{
+  if(obj.paid===true){
+
+    return(
+      <>
+    <Row className="bg-white_A700 items-center lg:my-[19px] xl:my-[21px] my-[24.5px] 
+    2xl:my-[24px] 3xl:my-[29px] lg:p-[15px] xl:p-[17px] p-[20px] 3xl:p-[24px] w-[100%]" key={obj.objID}>
+    <Box
+   sx={{
+    display:"flex",
+    flexDirection:"column",
+    width: "100%",
+    marginRight:"100px",
+    justifyContent:"space-around",
+    height: "100%",
+   
+    '&:hover': {
+      backgroundColor: 'primary.main',
+      opacity: [0.9, 0.8, 0.7],
+    },
+  }}
+>
+<div style={{
+fontWeight:"500",width:"70%",height:"50px", borderRadius:"10px",background:"lightgray",alignContent:"center"}}><h3>@Hotal {obj.title}</h3></div>
+
+<div style={{fontSize:"30px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"lightgray"}}>Room cost {obj.room_cost.room}</div>
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"50px",borderRadius:"10px",background:"lightgray"}}>
+Room type:<br></br>
+Room :X_</div>
+
+<div  style={{fontSize:"15px",fontWeight:"500",width:"70%",height:"70px",borderRadius:"10px",background:"lightgray"}}>
+stay:3 days, adults:{2 || obj.number_of_adult}
+<br></br>
+hospitalization: luxery: children: {0 && obj.number_of_children}
+</div>
+    </Box>
+      <Column className="items-center w-[29%]">
+      <Box
+  sx={{
+    width: 300,
+    height: "100%",
+    backgroundColor: 'lightgray ',
+    marginBottom:"5px",
+    '&:hover': {
+      backgroundColor: 'primary.main',
+      opacity: [0.9, 0.8, 0.7],
+    },
+  }}>
+    </Box>
+        <Img
+          src={obj.picture}
+          className="lg:h-[181px] xl:h-[207px] h-[232px] 2xl:h-[233px] 3xl:h-[279px] w-[100%]"
+          alt="previewImg"
+        />
+    <div style={{display:"flex",height:"auto",width:"100%",justifyContent:"space-between"}}>
+      <h2 style={{color:obj.color,fontWeight:"bold",backgroundColor:"blue",boxShadow:"2px 2px 20px lightgray",padding:"5px",margin:"2px"}}>Booked & Paid</h2>
+    </div>
+
+      </Column>
+    </Row>
+    </>
+  )
+}else{
+  return;
+}
+})
+
+
 
     const renderJsx=renderArr.map(dataArr=>{
       return(
@@ -173,6 +242,8 @@ hospitalization: luxery: children: {0 && dataArr.number_of_children}
         orientation="vertical" 
       >
 {renderJsx}
+<br/>
+{renderUserarr}
       </List>
     </>
   );

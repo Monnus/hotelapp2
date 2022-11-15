@@ -16,12 +16,15 @@ function  PaymentPage() {
 
     const onSumbetPayment=(event)=>{
         event.preventDefault();
-        const formInputsArr=Array.from(event.target);
-    //   if(formInputsArr.some(input=>!input.value))return alert("you have not Filled in all the fields");
-
-        formInputsArr.forEach(input=>{
+        let formInputsArr=Array.from(event.target);
+        formInputsArr.pop();
+      if(formInputsArr.some(input=>!input?.value))return alert("you have not Filled in all the fields");
+        hotelDate.Users.forEach(element => {
+            if(element.id===id_image){
+                element.paid=true;
+            }
         });
-
+     
         console.log(hotelDate);
     }
   return (
@@ -49,11 +52,11 @@ function  PaymentPage() {
     <form  onSubmit={onSumbetPayment} style={{marginLeft:'10%',minWidth:"auto",maxWidth:"55rem",fontSize:"1rem",fontWeight:"600"}}>
         <div style={{display:"flex",flexDirection:"column",width:"25rem",float:"right",border:"1px solid lightblue",justifyContent:"center",padding:"1.5rem"}}>
             <label>Name of Card</label>
-            <input type="number" placeholder='Name of Card' style={{height:"5rem",width:"20rem",fontSize:"1.5rem"}}/>
+            <input type="text" placeholder='Name of Card' style={{height:"5rem",width:"20rem",fontSize:"1.5rem"}}/>
         </div>
         <div style={{display:"flex",flexDirection:"column",width:"25rem",border:"1px solid lightblue",justifyContent:"center",padding:"1.5rem",}}>
         <label>Card Number</label>
-            <input type="number" placeholder='Card Number' style={{height:"5rem",fontSize:"1.5rem",width:"20rem"}}/>
+            <input type="text" placeholder='Card Number' style={{height:"5rem",fontSize:"1.5rem",width:"20rem"}}/>
         </div>
         <br/>
         <br/>
@@ -65,7 +68,7 @@ function  PaymentPage() {
         </div>
         <div  style={{display:"flex",flexDirection:"column",width:"25rem",border:"1px solid lightblue",justifyContent:"center",padding:"1.5rem"}}>
         <label>CVV code</label>
-            <input type="number" placeholder='CVV code'  style={{height:"5rem",width:"20rem",fontSize:"1.5rem"}}/>
+            <input type="text" placeholder='CVV code E.g 721'  style={{height:"5rem",width:"20rem",fontSize:"1.5rem"}}/>
         </div>
         <br/>
 <button type='submit'style={{backgroundColor:"#90EE90",width:"20rem",height:"5rem",color:"white",fontSize:"2rem",borderRadius:"0.5rem"}} >Pay now</button>
