@@ -2,10 +2,9 @@ import React,{useState,useEffect,useContext} from "react";
 
 import { UserContext } from "App";
 import { Column, Stack, Img, Row, Text, Button } from "components";
-import { id_image } from "components/landingPageComponents/middle";
 
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
@@ -16,7 +15,8 @@ import { getAuth, signOut } from "firebase/auth";
 
 //beginning of review page
 const ReviewPage = () => {
-
+const {getID}=useLocation().state;
+console.log("locationState",getID);
 const [addedOptions,setAddedOptions]=useState({
   number_of_adult:null,
   number_of_children:null,
@@ -51,11 +51,10 @@ const [addedOptions,setAddedOptions]=useState({
 
    const auth=getAuth()
   const navigate=useNavigate();
-  console.log("id_image",id_image);
 
 const reviewPagehotalData=Object.keys(hotalData).flatMap(element => {
   console.log(element);
-  return hotalData[element].filter(data=>data.id===id_image);
+  return hotalData[element].filter(data=>data.id===getID);
 });
 console.log(reviewPagehotalData);
 
@@ -170,7 +169,7 @@ function handleBookingsId(id){
             <Button onClick={()=>{
             setAddedOptions(item=>Object.assign(addedOptions,addedOptions.roomSelected=true));
             caputureReviewDetail=addedOptions;
-              navigate("/Bookings")}} className="bg-pink_400 font-normal lg:mt-[46px] xl:mt-[53px] mt-[60px] 3xl:mt-[72px] not-italic outline outline-[1px] outline-black_900_33 lg:py-[17px] xl:py-[20px] py-[23px] 3xl:py-[27px] rounded-radius4 lg:text-[24px] xl:text-[28px] text-[32px] 3xl:text-[38px] text-center text-white_A700 w-[30%]">
+              navigate("/Bookings",{state:{getID}})}} className="bg-pink_400 font-normal lg:mt-[46px] xl:mt-[53px] mt-[60px] 3xl:mt-[72px] not-italic outline outline-[1px] outline-black_900_33 lg:py-[17px] xl:py-[20px] py-[23px] 3xl:py-[27px] rounded-radius4 lg:text-[24px] xl:text-[28px] text-[32px] 3xl:text-[38px] text-center text-white_A700 w-[30%]">
               Book Now
             </Button>
             <p style={{height:"80px",width:"120px",border:"1px  solid black",alignItems:"center",padding:"30px 10px " , margin:"0 70px 0 0"} }>

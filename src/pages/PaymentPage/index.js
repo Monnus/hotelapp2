@@ -4,14 +4,15 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../Images/Frame33_logo.png";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import paymentImage from "../Images/paymentImage.svg";
-import { id_image } from 'components/landingPageComponents/middle';
 import { UserContext } from "App";
 
 function  PaymentPage() {
-    const hotelDate = useContext(UserContext)
+    const hotelDate = useContext(UserContext);
+const {getID}=useLocation().state;
+    
   const auth=getAuth();
 
     const onSumbetPayment=(event)=>{
@@ -20,7 +21,7 @@ function  PaymentPage() {
         formInputsArr.pop();
       if(formInputsArr.some(input=>!input?.value))return alert("you have not Filled in all the fields");
         hotelDate.Users.forEach(element => {
-            if(element.id===id_image){
+            if(element.id===getID){
                 element.paid=true;
             }
         });

@@ -1,6 +1,5 @@
 import React,{useState,useEffect,useContext} from "react";
 import { nanoid } from "nanoid";
-import { id_image } from "components/landingPageComponents/middle";
 import { List, Row, Column, Text, Input, Img, Line } from "components";
 import { caputureReviewDetail } from "pages/Review";
 import OtherHousesIcon from '@mui/icons-material/OtherHouses';
@@ -14,7 +13,7 @@ import { Box } from "@mui/system";
 import { UserContext } from "App";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
-
+import { useLocation } from "react-router-dom";
 
 
 const BookingspagePage = () => {
@@ -24,14 +23,14 @@ const auth=getAuth();
   const bookingsArr= new Set([]);
   let renderArr=[];
   // bookingsArr.clear()
-
-  console.log("hotalData",hotalData); 
+const {getID}=useLocation().state;
+  console.log("getID",getID); 
 
   if(caputureReviewDetail.roomSelected){
    const newObj= Object.keys(hotalData).flatMap(name=>{
       // console.log("hotalData",hotalData[name]);
 return hotalData[name].filter(item=>{
-  if(item.id===id_image){
+  if(item.id===getID){
     return item;
   }else{
     return }
@@ -39,7 +38,7 @@ return hotalData[name].filter(item=>{
 
 })
 
-bookingsArr.add({objID:nanoid(),id_image,...caputureReviewDetail,...newObj[0]})
+bookingsArr.add({objID:nanoid(),getID,...caputureReviewDetail,...newObj[0]})
 ; 
 }     
 
@@ -72,7 +71,7 @@ const handleBtn=(e)=>{
       hotalData.Users.push(renderArr[i]);
       }
     }
-  navigator("/payments")
+  navigator("/payments",{state:{getID}})
   }
 // console.log(e.target.dataset.id);
 }

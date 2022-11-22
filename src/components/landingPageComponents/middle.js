@@ -28,9 +28,10 @@ console.log("best rooms",hotalData.bestRooms);
   // console.log(hotRoomsObj);
 const navigate=useNavigate();
 function handleBookingsId(id){
- id_image=id;
-console.log(id);
- navigate("/review")
+
+ navigate("/review",{state:{
+  getID:id
+ }});
 }
   const newRoom=hotalData.NewRooms.map(data=>{
     return(
@@ -72,6 +73,11 @@ const bestSelling=hotalData.bestRoom.map(data=>{
       image={data.picture}
       alt="Room Images"
     />
+    {/*    
+    <Box
+     component="div"
+      sx={{ height:"150px",backgroundImage:`url(${data.picture})`,width:"100%",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center"}}
+    > */}
     <CardContent>
       <Typography gutterBottom variant="h5" component="div">
         {data.title}
@@ -172,4 +178,3 @@ const bestSelling=hotalData.bestRoom.map(data=>{
   </main>
   )
 }
-export let id_image="room1";
