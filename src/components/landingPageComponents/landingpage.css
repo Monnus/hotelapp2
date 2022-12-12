@@ -1,0 +1,7 @@
+.container-for-rooms{
+    background: #5DBBFF;
+    display: flex;
+    justify-content:space-around;
+    height: auto;
+    flex-wrap: wrap;
+}
