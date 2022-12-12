@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes,Route } from "react-router-dom";
 import NotFound from "pages/NotFound";
 import SigninPage from "pages/Signin";
 import LoginuserPage from "pages/Loginuser";
@@ -13,15 +13,15 @@ const ProjectRoutes = () => {
   return (
 
       <Routes>
-      <Route path="/" element={<LandingPage/>}/>  
-      <Route path="/register" element={<SigninPage/>}/>
-      <Route path="/loginPage" element={<LoginuserPage/>}/>
-      <Route path="/AdminsigninPage" element={<AdminsigninPage/>} />
-      <Route path='/review' element={<ReviewPage/>} />
-      <Route path='/Bookings' element={<BookingspagePage/>}  />
-      <Route path="/AdminPage" element={<AdminPage/>} />
-      <Route path="/payments" element={<PaymentPage/>} />
-        <Route path="*" element={<NotFound />} />
+      <Route path="/" exact element={<LandingPage/>}/>  
+      <Route path="/register" exact element={<SigninPage/>}/>
+      <Route path="/loginPage" exact element={<LoginuserPage/>}/>
+      <Route path="/AdminsigninPage" exact element={<AdminsigninPage/>} />
+      <Route path='/review' exact element={<ReviewPage/>} />
+      <Route path='/Bookings' exact element={<BookingspagePage/>}  />
+      <Route path="/AdminPage" exact element={<AdminPage/>} />
+      <Route path="/payments" exactelement={<PaymentPage/>} />
+        <Route path="*" exact element={<NotFound />} />
       </Routes>
 
   );
