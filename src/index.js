@@ -5,10 +5,10 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./styles/index.css";
 import "./styles/tailwind.css";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from "react-router-dom";
 ReactDOM.render(
-    <Router>
+  <HashRouter>
     <App />
-    </Router>
- , document.getElementById("root")
+  </HashRouter>,
+  document.getElementById("root")
 );
