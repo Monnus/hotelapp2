@@ -100,8 +100,8 @@ sx={{backgroundColor:"#D62A80" ,color:"white",width:"250px",borderRadius:"0.5em"
         <div style={{height:"100px",width:"auto"}}><img src={logo} className="logo" alt=""/></div>
       <nav style={{width:"400px",height:"100%"}}>
       <ul  style={{display:"flex"}}>
-        <li style={{display:"inline-block",textDecoration:"none", color:"#D62A80",width:"150px",background:"#802AD6"}}><a href="/" style={{textDecoration:"none"}}>Home</a></li>
-        <li style={{display:"inline-block",textDecoration:"none", color:"#D62A80",width:"150px",background:"#802AD6"}}><a href="/AdminsigninPage" style={{textDecoration:"none"}}>Login</a></li>
+        <li style={{display:"inline-block",textDecoration:"none", color:"#D62A80",width:"150px",background:"#802AD6"}}><Link to="/" style={{textDecoration:"none"}}>Home</Link></li>
+        <li style={{display:"inline-block",textDecoration:"none", color:"#D62A80",width:"150px",background:"#802AD6"}}><Link to="/AdminsigninPage" style={{textDecoration:"none"}}>Login</Link></li>
         </ul>
       </nav>
       </div>
